@@ -7,9 +7,9 @@ from django.utils import timezone
 def create_customer(data):
     customer = Customer.objects.create(
          external_id=data['external_id'],
-        status=data.get('status', 1),  # Activo por defecto si no se proporciona
+        status=data.get('status', 1),
         score=data['score'],
-        preapproved_at=timezone.now()  # Establecer preapproved_at en la fecha y hora actual
+        preapproved_at=timezone.now() 
     )
 
 def get_customer_balance(external_id):

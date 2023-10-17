@@ -11,10 +11,10 @@ class CustomerViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         data = request.data
-        create_customer(data)  # Llama a la función de servicio para crear un cliente
+        create_customer(data)
         return Response(data, status=status.HTTP_201_CREATED)
 
     @action(detail=False, methods=['GET'], url_path='customer/(?P<external_id>[^/.]+)/balance/')
     def get_customer_balance(self, request, external_id):
-        customer_balance = get_customer_balance(external_id)  # Llama a la función de servicio para obtener el balance
+        customer_balance = get_customer_balance(external_id) 
         return Response(customer_balance, status=status.HTTP_200_OK)
