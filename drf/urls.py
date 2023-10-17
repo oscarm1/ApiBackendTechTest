@@ -5,7 +5,7 @@ from rest_framework.documentation import include_docs_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('docs/', include_docs_urls(title='Api OM Documentation')),
-    path('api/v1/customer/', include('app_customers.urls')),  # Ruta para Customer
-    path('api/v1/loan/', include('app_loans.urls')),  # Ruta para Loan
-    path('api/v1/payment/', include('app_payments.urls')),  # Ruta para Payment
+    path('api/v1/customer/', include('app_customers.urls')),  
+    path('api/v1/loan/', include('app_loans.urls')), 
+    path('api/v1/payment/', include('app_payments.urls')),
 ]

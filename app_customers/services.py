@@ -15,6 +15,9 @@ def create_customer(data):
 def get_customer_balance(external_id):
     customer = get_customer_by_external_id(external_id)
 
+    if not customer:
+        return {"error": "Customer not found"}, None
+
     loans = Loan.objects.filter(customer_external_id=customer, status__in=[1, 2])
     total_debt = sum(loan.outstanding for loan in loans)
     customer_score = Decimal(customer.score)
@@ -27,4 +30,4 @@ def get_customer_balance(external_id):
         "total_debt": total_debt
     }
 
-    return data
+    return data, None

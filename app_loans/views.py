@@ -11,7 +11,6 @@ class LoanViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         data = request.data
-        #create_loan(data)
         loan, error = create_loan(data)
 
         if error:
@@ -21,6 +20,6 @@ class LoanViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['GET'], url_path='loan/(?P<external_id>[^/.]+)/loans-by-customer/')
     def get_loans_by_customer(self, request, external_id):
-        loans = get_loans_by_customer(external_id)  # Llama a la función de servicio para obtener los préstamos por cliente
+        loans = get_loans_by_customer(external_id)
         serializer = LoanSerializer(loans, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
